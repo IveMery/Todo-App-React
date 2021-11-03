@@ -17,23 +17,35 @@ const TodoList = () => {
     }
 
     return (
-        <div>
+        <div> 
             <h3>Lista de Tareas</h3>
-            <article className="card">
+            {
+                todo.length === 0
+                 ? 
+                 <div className=" alert alert-primary">
+                    No ha tareas, por favor agrega algunas...
+                </div>
+                :
+                <article className="card">
                 <div className='card-body'>
                     <ul>
                         {
-                            todo?.map(list => (
+                            todo.map(list => (
                                 <List key={list.id}
                                     title={list.title}
                                     id={list.id}
-                                    completed={list.completed} />
+                                    completed={list.completed}
+                                    list={list} />
                             ))
                         }
 
                     </ul>
                 </div>
             </article>
+
+            }
+            
+           
         </div>
     )
 }

@@ -7,34 +7,40 @@ const UserTodosContext = createContext()
 
 const UserProvider = ({ children, }) => {
 
-    // const initialTodos = []
-    const initialTodos = [{
-        title: 'tarea1',
-        completed: false,
-        id: uuid()
-    },
-    {
-        title: 'tarea2',
-        completed: false,
-        id: uuid()
-    },]
 
-    const [todo, setTodo] = useState([])
+    const initialTodos = [
+        {
+            title: 'tarea1',
+            completed: false,
+            id: uuid()
+        },
+        {
+            title: 'tarea2',
+            completed: false,
+            id: uuid()
+        }
+    ]
+
+    const [todo, setTodo] = useState(initialTodos)
     const [todoEdit, setTodoEdit] = useState(null)
 
     //agregarTodo
 
-    const todoAdd = (todos) => {
+    const todoAdd = (task) => {
 
         const newTodo = {
-            ...todo,
-            title: "",
+            ...task,
             completed: false,
             id: uuid()
+
         }
 
-       
-        setTodo(newTodo)
+        const changedTodos = [
+            ...todo,
+            newTodo
+        ]
+
+        setTodo(changedTodos)
     }
 
 
@@ -58,20 +64,21 @@ const UserProvider = ({ children, }) => {
         setTodo(completedTodo)
     }
     console.log(todoEdit);
+
     //Editar Tarea
-    const updateTodo = (todoEdit) => {
+    const updateTodo = (task) => {
 
         const update = todo.map(item => (
-            item.id === todoEdit.id
-                ? todoEdit : item
+            item.id === task.id
+                ? task : item
 
         ))
         setTodo(update)
     }
-    console.log(todo);
 
 
-    const data = { todo, setTodo, todoAdd ,todoDelete, todoToggleCompleted, setTodoEdit, todoEdit, updateTodo }
+
+    const data = { todo, setTodo, todoAdd, todoDelete, todoToggleCompleted,  setTodoEdit, todoEdit, updateTodo }
 
 
     return (
