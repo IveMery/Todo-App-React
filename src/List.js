@@ -2,9 +2,9 @@ import React from 'react'
 import { useContext } from 'react'
 import UserTodosContext from './contexts/UserTodosContext'
 
-const List = ({ title, id, completed, list}) => {
+const List = ({ title, id, completed, list }) => {
 
-    const { todo, todoDelete, todoToggleCompleted, setTodoEdit } = useContext(UserTodosContext)
+    const { todoDelete, todoToggleCompleted, setTodoEdit } = useContext(UserTodosContext)
     console.log(completed);
 
     return (
@@ -13,8 +13,9 @@ const List = ({ title, id, completed, list}) => {
             <div>
                 <button className={`btn ${completed ? 'btn-success' : 'btn-outline-success'} btn-sm mb-2 mx-2`}
                     onClick={() => todoToggleCompleted(id)}
-                >{completed ? 'Completado' : 'Completar'}
-
+                >{completed
+                    ? 'Completado'
+                    : 'Completar'}
                 </button>
                 <button className='btn btn-warning  btn-sm mb-2 mx-2'
                     onClick={() => setTodoEdit(list)}

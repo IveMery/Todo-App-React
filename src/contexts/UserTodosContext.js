@@ -1,12 +1,10 @@
 import React from 'react'
 import { createContext, useState } from 'react'
 import uuid from 'react-uuid'
-import TodoList from '../TodoList'
 
 const UserTodosContext = createContext()
 
 const UserProvider = ({ children, }) => {
-
 
     const initialTodos = [
         {
@@ -32,7 +30,6 @@ const UserProvider = ({ children, }) => {
             ...task,
             completed: false,
             id: uuid()
-
         }
 
         const changedTodos = [
@@ -47,7 +44,6 @@ const UserProvider = ({ children, }) => {
     //Eliminar Tarea
     const todoDelete = (todoId) => {
         const deleteTodo = todo.filter(item => item.id !== todoId)
-
         setTodo(deleteTodo)
     }
 
@@ -71,15 +67,11 @@ const UserProvider = ({ children, }) => {
         const update = todo.map(item => (
             item.id === task.id
                 ? task : item
-
         ))
         setTodo(update)
     }
 
-
-
-    const data = { todo, setTodo, todoAdd, todoDelete, todoToggleCompleted,  setTodoEdit, todoEdit, updateTodo }
-
+    const data = { todo, setTodo, todoAdd, todoDelete, todoToggleCompleted, setTodoEdit, todoEdit, updateTodo }
 
     return (
         <UserTodosContext.Provider value={data}>
