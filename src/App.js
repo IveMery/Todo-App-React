@@ -1,27 +1,26 @@
 import React from "react";
-import TodoForm from "./TodoForm";
-import TodoList from "./TodoList";
-import { UserProvider} from "./contexts/UserTodosContext"
-//modularizar por componentes
-//agregar modo oscuro
+import TodoForm from "./views/TodoForm";
+import TodoList from "./views/TodoList";
+import { UserProvider } from "./contexts/UserTodosContext"
+import NavBar from "./views/NavBar";
+import Container from "./components/Container";
+import './style.css/style.css'
 
-function App() {
+const App = () => {
   return (
     <>
-    <UserProvider>
-     
-      <div className="container mt-4 bg-dark text-white">
-      <h1 className='text-center'>Todo App</h1>
-        <div className="row">
-          <div className="col-8">
-           <TodoList/>
-          </div>
-          <div className="col-4">
-           <TodoForm/>
-          </div>
-        </div>
-
-      </div>
+      <UserProvider>
+        <NavBar />
+        <Container className="container-fluid vh-100  text-white">
+          <Container className="row d-flex  flex-wrap-reverse">
+            <Container className=" col-xs-12 col-md-8">
+              <TodoList />
+            </Container>
+            <Container className="col-md-4 col-xs-12 ">
+              <TodoForm />
+            </Container>
+          </Container>
+        </Container>
       </UserProvider>
     </>
   );

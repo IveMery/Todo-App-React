@@ -2,6 +2,7 @@ import React from 'react'
 import { createContext, useState } from 'react'
 import uuid from 'react-uuid'
 
+
 const UserTodosContext = createContext()
 
 const UserProvider = ({ children, }) => {
@@ -71,7 +72,7 @@ const UserProvider = ({ children, }) => {
         setTodo(update)
     }
 
-    const data = { todo, setTodo, todoAdd, todoDelete, todoToggleCompleted, setTodoEdit, todoEdit, updateTodo }
+    const data = { todo, setTodo, todoAdd, todoDelete, todoToggleCompleted, setTodoEdit, todoEdit, updateTodo, }
 
     return (
         <UserTodosContext.Provider value={data}>
