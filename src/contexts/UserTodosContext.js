@@ -41,7 +41,6 @@ const UserProvider = ({ children, }) => {
         setTodo(changedTodos)
     }
 
-
     //Eliminar Tarea
     const todoDelete = (todoId) => {
         const deleteTodo = todo.filter(item => item.id !== todoId)

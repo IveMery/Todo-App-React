@@ -8,7 +8,6 @@ import Button from '../components/Button'
 import ListItem from '../components/ListItem'
 import "../style.css/list.css"
 
-
 const List = ({ title, id, completed, list }) => {
 
     const { handleModal, handleClose, modal } = useModal()
