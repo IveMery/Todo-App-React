@@ -1,5 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react'
-import UserTodosContext from './contexts/UserTodosContext'
+import UserTodosContext from '../contexts/UserTodosContext'
+import Form from "../components/Form"
+import Input from '../components/Input'
+import Title from '../components/Title'
+import Container from '../components/Container'
+import Button from '../components/Button'
 
 const TodoForm = () => {
 
@@ -72,12 +77,12 @@ const TodoForm = () => {
     }
 
     return (
-        <div>
-            <h1>{todoEdit ? 'Editar Tarea' : 'Agrega una tarea'}</h1>
-            {todoEdit && <button className="btn btn-warning mb-2"
-                onClick={handleClickCancelEditition}>Cancelar Edicion</button>}
-            <form className="form-control" onSubmit={handleSubmit}>
-                <input
+        <>
+            <Title className="mt-3">{todoEdit ? 'Editar Tarea' : 'Agrega una tarea'}</Title>
+            {todoEdit && <Button className="btn btn-warning mb-2"
+                onClick={handleClickCancelEditition}>Cancelar Edicion</Button>}
+            <Form className="form-control" onSubmit={handleSubmit}>
+                <Input
                     className="mb-2 form-control"
                     type="text"
                     placeholder="Escribe una tarea"
@@ -85,27 +90,27 @@ const TodoForm = () => {
                     name="title"
                     onChange={handleChange}
                 />
-                <button
+                <Button
                     className="btn btn-primary mt-2"
                     type='submit'
                     onSubmit={handleSubmit}> {
                         todoEdit ? 'Editar' : 'Agregar'
                     }
-                </button>
+                </Button>
                 {error &&
-                    <div
+                    <Container
                         className="alert alert-danger mt-2"
                         role="alert">
                         {error}
-                    </div>}
+                    </Container>}
                 {messageOk &&
-                    <div
+                    <Container
                         className="alert alert-success mt-2"
                         role="alert">
                         {messageOk}
-                    </div>}
-            </form>
-        </div>
+                    </Container>}
+            </Form>
+        </>
     )
 }
 

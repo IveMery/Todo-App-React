@@ -1,0 +1,5 @@
+body {
+    background: rgb(143,112,209);
+    background: linear-gradient(138deg, rgba(143,112,209,1) 0%, rgba(71,66,232,1) 2%, rgba(218,22,148,0.9668242296918768) 52%, rgba(255,218,0,1) 83%);
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}

@@ -1,8 +1,11 @@
 import React from 'react'
-import { useState } from 'react'
-import { useContext } from 'react'
-import UserTodosContext from './contexts/UserTodosContext'
+import { useState ,useContext } from 'react'
+import UserTodosContext from '../contexts/UserTodosContext'
 import List from './List'
+import Title from '../components/Title'
+import UnorderedList from '../components/UnorderedList'
+import Card from '../components/Card'
+import Container from '../components/Container'
 
 const TodoList = () => {
 
@@ -16,35 +19,33 @@ const TodoList = () => {
     }
 
     return (
-        <div>
-            <h3>Lista de Tareas</h3>
+        <>
+            <Title className="mt-2 mb-2">Lista de Tareas</Title>
             {
                 todo.length === 0
                     ?
-                    <div className=" alert alert-primary">
+                    <Container className=" alert alert-primary">
                         No ha tareas, por favor agrega algunas...
-                    </div>
+                    </Container>
                     :
-                    <article className="card">
-                        <div className='card-body'>
-                            <ul>
+                    <Card className="card mt-3 mb-2">
+                        <Container className='card-body'>
+                            <UnorderedList>
                                 {
                                     todo.map(list => (
                                         <List key={list.id}
                                             title={list.title}
                                             id={list.id}
                                             completed={list.completed}
-                                            list={list} />
+                                            list={list}
+                                        />
                                     ))
                                 }
-                            </ul>
-                        </div>
-                    </article>
-
+                            </UnorderedList>
+                        </Container>
+                    </Card>
             }
-
-
-        </div>
+        </>
     )
 }
 
